@@ -2,16 +2,16 @@ import React from "react";
 
 import FormCheck from "./form-check";
 
-import './answer-radiobutton.css';
+import './answer-checkbox.css';
 
-const AnswerRadioButton = (props) => {
+const AnswerCheckbox = (props) => {
 
     const { options, score, rightAnswer, id } = props;
 
     return (
         <form className="form-group col-10 offset-1">
                 <label htmlFor={`container-${id}`}>
-                    Оберіть одну правильну відповідь
+                    Оберіть декілька правильних відповідей
                 </label>
                 <div id={`container-${id}`}>
                     {
@@ -27,4 +27,4 @@ const AnswerRadioButton = (props) => {
 
 };
 
-export default AnswerRadioButton;
+export default AnswerCheckbox;

@@ -3,18 +3,14 @@ import React from "react";
 import Question from "../../../../components/question";
 import Answer from "../../../../components/answer";
 
-
 import './question-box.css';
 
 const QuestionBox = (props) => {
-
-    const { index } = props;
-
+    const { questionItem, index } = props;
     return (
-        <li className=''
-            >
-            <Question index={index}/>
-            <Answer/>
+        <li>
+            <Question index={index} question={questionItem.question}/>
+            <Answer question={questionItem}/>
         </li>
     )
 };

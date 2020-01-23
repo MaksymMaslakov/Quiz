@@ -2,38 +2,37 @@ import React from "react";
 
 import AnswerTextInput from "./answer-textinput";
 import AnswerRadioButton from './answer-radiobutton';
+import AnswerCheckbox from "./answer-checkbox";
+import AnswerSelect from "./answer-select";
 
 import './answer.css'
+import ErrorIndicator from "../error-indicator";
 
-const hintFromTypeQuestion = {
-    'textinpit': 'введите правильный ответ',
-    'radio-button': 'выберите один правильный ответ',
-    'checkbox': 'выберите несколько правильных ответов',
-    'select': 'выберите один правильный ответ'
-};
-
-const question = {
-    id:  9,
-    type: "radio-button",
-    question: "«Космічну еру» в історії людства започатковано",
-    options: [
-        "першим польотом людини в космос",
-        "висадкою першої людини на Місяці за програмою «Aполлон»",
-        "запуском людиною першого штучного супутника Землі",
-        "успішним випробуванням людиною першої балістичної ракети"
-    ],
-    rightAnswer:  "запуском людиною першого штучного супутника Землі"
-};
-
-const score = 0;
 
 const Answer = (props) => {
 
-    const type = 'textinpit';
-        // {`${hintFromTypeQuestion[type]}`}
+    const { question, score } = props;
+    const { type } = question;
+
+    let answer;
+
+    switch(type){
+        case 'select': answer = <AnswerSelect {...question} score={score}/>; break;
+        case 'radio-button': answer = <AnswerRadioButton {...question} score={score}/>; break;
+        case 'textinput': answer = <AnswerTextInput {...question} score={score}/>; break;
+        case 'checkbox': answer = <AnswerCheckbox {...question} score={score}/>; break;
+        default: answer = (
+            <div>
+                <h3>Something wring with question type</h3>
+                <ErrorIndicator/>
+            </div>);
+        }
+
     return (
         <div className='Box-body'>
-            <AnswerRadioButton {...question} score={score}/>
+            {
+                answer
+            }
         </div>
     )
 };

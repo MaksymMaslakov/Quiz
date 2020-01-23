@@ -5,11 +5,11 @@ import './question.css';
 
 
 const Question = (props) => {
-    const { index } = props
+    const { question, index } = props
     return (
         <div className='Box-header'>
             <p className='question'>
-                {`${index}. Question`}
+                {`${index}. ${question}`}
             </p>
         </div>
     );

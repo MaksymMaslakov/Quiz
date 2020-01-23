@@ -3,8 +3,8 @@ import React from "react";
 const FormCheck = ({option, id, idx}) => {
     return (
                 <li className="form-check d-flex align-items-center">
-                    <input type="radio"
-                           name={`radio-${id}`}
+                    <input type="checkbox"
+                           name={`radio-${idx}`}
                            className="form-check-input"
                            id={`Check-${id}-${idx}`}/>
 
