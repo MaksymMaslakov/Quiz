@@ -1,9 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
+
 import Header from "../../components/header";
+import QuestionList from "./question-list";
 
 const Home = () => {
     return(
-        <Header/>
+        <Fragment>
+            <Header/>
+            <QuestionList/>
+        </Fragment>
     )
 };
 

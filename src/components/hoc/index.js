@@ -1,8 +1,8 @@
 import withErrorBoundary from "./withErrorBoundary";
-import withGitHubAppService from './withGitHubAppService'
+import withQuestionsService from './withQuestionsService'
 
 
 export {
     withErrorBoundary,
-    withGitHubAppService
+    withQuestionsService
 };

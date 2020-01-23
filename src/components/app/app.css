@@ -6,3 +6,12 @@ body{
     padding-left: 10px;
     padding-right: 10px;
 }
+
+ul{
+    list-style: none;
+}
+
+li{
+    list-style: none;
+}
+
