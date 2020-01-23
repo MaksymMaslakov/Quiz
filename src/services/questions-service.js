@@ -2,7 +2,7 @@ class QuestionsService  {
 
     _apiBased = 'http://localhost:3000';
 
-    getQuestions = async () => {
+    getAllQuestions = async () => {
         const res = await fetch(`${this._apiBased}/questions`);
         if(!res.ok){
             throw new Error(`Could not fetch, received ${res.status}`)
