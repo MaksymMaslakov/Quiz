@@ -6,19 +6,21 @@ import './answer-radiobutton.css';
 
 const AnswerRadioButton = (props) => {
 
-    const { options, score, rightAnswer, type, id } = props;
+    const { options, score, rightAnswer, id } = props;
 
     return (
-        <form>
-            <div className="form-group col-10">
-                {/*<label htmlFor={`Input${id}`}>*/}
-                {/*    Оберіть одну правильну відповідь*/}
-                {/*</label>*/}
+        <form className="form-group col-10 offset-1">
+                <label htmlFor={`container-${id}`}>
+                    Оберіть одну правильну відповідь
+                </label>
+                <div id={`container-${id}`}></div>
                 {
                     options.map( (option, idx) =>
-                        <FormCheck option={option}/>)
+                        <FormCheck option={option}
+                                   id={id}
+                                   idx={idx}
+                                   key={`${id}-${idx}`}/>)
                 }
-            </div>
         </form>
     )
 

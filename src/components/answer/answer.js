@@ -13,16 +13,16 @@ const hintFromTypeQuestion = {
 };
 
 const question = {
-    "id":  9,
-    "type": "radio-button",
-    "question": "«Космічну еру» в історії людства започатковано",
-    "options": [
+    id:  9,
+    type: "radio-button",
+    question: "«Космічну еру» в історії людства започатковано",
+    options: [
         "першим польотом людини в космос",
         "висадкою першої людини на Місяці за програмою «Aполлон»",
         "запуском людиною першого штучного супутника Землі",
         "успішним випробуванням людиною першої балістичної ракети"
     ],
-    "right-answer":  "запуском людиною першого штучного супутника Землі"
+    rightAnswer:  "запуском людиною першого штучного супутника Землі"
 };
 
 const score = 0;
@@ -33,7 +33,7 @@ const Answer = (props) => {
         // {`${hintFromTypeQuestion[type]}`}
     return (
         <div className='Box-body'>
-            <AnswerTextInput {...question} score={score}/>
+            <AnswerRadioButton {...question} score={score}/>
         </div>
     )
 };

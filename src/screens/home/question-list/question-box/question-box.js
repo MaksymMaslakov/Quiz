@@ -11,7 +11,8 @@ const QuestionBox = (props) => {
     const { index } = props;
 
     return (
-        <li className=''>
+        <li className=''
+            >
             <Question index={index}/>
             <Answer/>
         </li>
