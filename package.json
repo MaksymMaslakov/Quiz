@@ -16,7 +16,7 @@
     "redux": "^4.0.5"
   },
   "scripts": {
-    "start-with-server": "npm run start && json-server --watch ./src/db.json",
+    "start-with-server": "npm run start && json-server --watch db.json --port 4444",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
