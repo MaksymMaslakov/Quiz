@@ -11,6 +11,9 @@ import { withQuestionsService } from '../hoc';
 class App extends Component{
     render(){
 
+        this.props.questionsService.getAllQuestions()
+            .then( (body) => console.log(body));
+
         return(
             <Switch>
                 <Route path='/'
