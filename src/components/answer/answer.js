@@ -1,32 +1,34 @@
 import React from "react";
+import {connect} from "react-redux";
 
 import AnswerTextInput from "./answer-textinput";
 import AnswerRadioButton from './answer-radiobutton';
 import AnswerCheckbox from "./answer-checkbox";
 import AnswerSelect from "./answer-select";
-
-import './answer.css'
 import ErrorIndicator from "../error-indicator";
 
+import {incrementScore, setUserAnswer} from "../../redux/actions";
+
+import './answer.css'
 
 const Answer = (props) => {
 
-    const { question, score } = props;
-    const { type } = question;
+    const { questionItem: {type} } = props;
+
 
     let answer;
 
     switch(type){
-        case 'select': answer = <AnswerSelect {...question} score={score}/>; break;
-        case 'radio-button': answer = <AnswerRadioButton {...question} score={score}/>; break;
-        case 'textinput': answer = <AnswerTextInput {...question} score={score}/>; break;
-        case 'checkbox': answer = <AnswerCheckbox {...question} score={score}/>; break;
+        case 'select': answer = <AnswerSelect {...props}/>; break;
+        case 'radio-button': answer = <AnswerRadioButton {...props}/>; break;
+        case 'textinput': answer = <AnswerTextInput {...props}/>; break;
+        case 'checkbox': answer = <AnswerCheckbox {...props}/>; break;
         default: answer = (
             <div>
                 <h3>Something wring with question type</h3>
                 <ErrorIndicator/>
             </div>);
-        }
+    }
 
     return (
         <div className='Box-body'>
@@ -37,7 +39,20 @@ const Answer = (props) => {
     )
 };
 
-export default Answer;
+const mapStateToProps = ({isFinished , userAnswers}) => {
+    return {
+        isFinished,
+        userAnswers
+    }
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        incrementScore: incrementScore(dispatch),
+        setUserAnswer: setUserAnswer(dispatch)
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Answer);
 
 
 

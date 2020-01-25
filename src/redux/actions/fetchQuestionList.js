@@ -4,10 +4,10 @@ const questionsRequested = () =>{
     }
 };
 
-const questionsLoaded = (questions) => {
+const questionsLoaded = (questionList) => {
     return {
         type: 'FETCH_QUESTIONS_LIST_SUCCESS',
-        payload: questions
+        payload: questionList
     }
 };
 

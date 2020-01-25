@@ -6,7 +6,7 @@ import './answer-checkbox.css';
 
 const AnswerCheckbox = (props) => {
 
-    const { options, score, rightAnswer, id } = props;
+    const { options, id } = props.questionItem;
 
     return (
         <form className="form-group col-10 offset-1">
@@ -15,11 +15,10 @@ const AnswerCheckbox = (props) => {
                 </label>
                 <div id={`container-${id}`}>
                     {
-                        options.map( (option, idx) =>
+                        options.map( (option) =>
                             <FormCheck option={option}
                                        id={id}
-                                       idx={idx}
-                                       key={`${id}-${idx}`}/>)
+                                       key={`${id}-${option.id}`}/>)
                     }
                 </div>
         </form>

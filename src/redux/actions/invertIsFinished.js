@@ -1,6 +1,8 @@
 const invertIsFinished = (dispatch) => () => {
+
+
     dispatch( {
-        type: 'DECREMENT_SCORE'
+        type: 'INVERT_IS_FINISHED'
     })
 };
-export default invertIsFinished
+export default invertIsFinished;

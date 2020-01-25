@@ -6,11 +6,13 @@ import Answer from "../../../../components/answer";
 import './question-box.css';
 
 const QuestionBox = (props) => {
+
     const { questionItem, index } = props;
+
     return (
         <li>
             <Question index={index} question={questionItem.question}/>
-            <Answer question={questionItem}/>
+            <Answer questionItem={questionItem}/>
         </li>
     )
 };

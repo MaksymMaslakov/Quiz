@@ -1,72 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import QuestionBox from "./question-box/question-box";
+import Spinner from "../../../components/spinner";
 
 import "./question-list.css"
 
 
-//mock data
-const questions = [
-    {
-        id:  1,
-        type: "radio-button",
-        question: "«Космічну еру» в історії людства започатковано",
-        options: [
-            "першим польотом людини в космос",
-            "висадкою першої людини на Місяці за програмою «Aполлон»",
-            "запуском людиною першого штучного супутника Землі",
-            "успішним випробуванням людиною першої балістичної ракети"
-        ],
-        rightAnswer:  "запуском людиною першого штучного супутника Землі"
-    },
-    {
-        id:  2,
-        type: "select",
-        question: "«Космічну еру» в історії людства започатковано",
-        options: [
-            "першим польотом людини в космос",
-            "висадкою першої людини на Місяці за програмою «Aполлон»",
-            "запуском людиною першого штучного супутника Землі",
-            "успішним випробуванням людиною першої балістичної ракети"
-        ],
-        rightAnswer:  "запуском людиною першого штучного супутника Землі"
-    },
-    {
-        id:  3,
-        type: "radio-button",
-        question: "«Космічну еру» в історії людства започатковано",
-        options: [
-            "першим польотом людини в космос",
-            "висадкою першої людини на Місяці за програмою «Aполлон»",
-            "запуском людиною першого штучного супутника Землі",
-            "успішним випробуванням людиною першої балістичної ракети"
-        ],
-        rightAnswer:  "запуском людиною першого штучного супутника Землі"
-    },
-    {
-        id:  4,
-        type: "select",
-        question: "«Космічну еру» в історії людства започатковано",
-        options: [
-            "першим польотом людини в космос",
-            "висадкою першої людини на Місяці за програмою «Aполлон»",
-            "запуском людиною першого штучного супутника Землі",
-            "успішним випробуванням людиною першої балістичної ракети"
-        ],
-        rightAnswer:  "запуском людиною першого штучного супутника Землі"
-    }
-];
-
 const QuestionList = (props) => {
 
-    // const { questions } = props;
+    const { questionList, isLoading } = props;
 
-    // const questions = ['1','2'];
+    if(isLoading)
+        return <Spinner/>;
+
     return (
         <ul className='Box col-10 offset-1'
             id='question-list'>
             {
-                questions.map( (questionItem, idx) =>
+                questionList.map( (questionItem, idx) =>
                     <QuestionBox className='Box col-10 offset-2'
                                  questionItem={questionItem}
                                  index={idx+1}
@@ -76,4 +28,11 @@ const QuestionList = (props) => {
     );
 };
 
-export default QuestionList;
+const mapStateToProps = ({questions: {questionList, isLoading}}) => {
+    return {
+        questionList,
+        isLoading
+    }
+};
+
+export default connect(mapStateToProps)(QuestionList);

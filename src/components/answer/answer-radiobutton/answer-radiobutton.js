@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import FormCheck from "./form-check";
 
@@ -6,7 +7,9 @@ import './answer-radiobutton.css';
 
 const AnswerRadioButton = (props) => {
 
-    const { options, score, rightAnswer, id } = props;
+    const { options, id } = props.questionItem;
+
+
 
     return (
         <form className="form-group col-10 offset-1">
@@ -15,11 +18,10 @@ const AnswerRadioButton = (props) => {
                 </label>
                 <div id={`container-${id}`}>
                     {
-                        options.map( (option, idx) =>
+                        options.map( (option) =>
                             <FormCheck option={option}
                                        id={id}
-                                       idx={idx}
-                                       key={`${id}-${idx}`}/>)
+                                       key={`${id}-${option.id}`}/>)
                     }
                 </div>
         </form>
@@ -27,4 +29,4 @@ const AnswerRadioButton = (props) => {
 
 };
 
-export default AnswerRadioButton;
+export default connect()(AnswerRadioButton);

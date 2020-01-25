@@ -3,13 +3,9 @@ const updateScore = (state, action) => {
         return 0;
 
     switch (action.type) {
-        case 'INCREMENT_SCORE': return state.score+1;
-        case 'DECREMENT_SCORE' :
-            if((state.score-1) < 0)
-                return 0;
-            else
-                return state.score-1;
-        case 'SET_SCORE': return action.payload;
+        case 'INCREMENT_SCORE': { console.log(state.score + 1);return (state.score + 1)};
+        case 'DECREMENT_SCORE' : return ((state.score-1) < 0) ? 0 : (state.score-1);
+        case 'SET_SCORE': return (action.payload > 0) ? action.payload : 0;
         default: return state.score;
     }
 };
