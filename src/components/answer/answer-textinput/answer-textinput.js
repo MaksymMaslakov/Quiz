@@ -6,16 +6,8 @@ import './answer-textinput.css';
 
 
 const AnswerTextInput = (props) => {
-    const {  questionItem, isFinished, incrementScore, setUserAnswer, userAnswers } = props;
-    const { rightAnswer, id } = questionItem;
-
-    let resultClass = '';
-    // console.log(userAnswers);
-    if(isFinished){
-       const isValid = validation(userAnswers[id], rightAnswer, incrementScore);
-       isValid ? (resultClass = 'is-valid') : (resultClass = 'is-invalid');
-    }
-
+    const {  questionItem,  setUserAnswer, userAnswers, resultClass, isChangeable } = props;
+    const { id } = questionItem;
 
     return (
         <form>
@@ -26,7 +18,8 @@ const AnswerTextInput = (props) => {
                        className={`form-control ${resultClass}`}
                        value={userAnswers[id] || ''}
                        onChange={(e) => setUserAnswer(id, e.target.value)}
-                       placeholder="Введіть правильну відповідь"/>
+                       placeholder="Введіть правильну відповідь"
+                       disabled={isChangeable}/>
             </div>
         </form>
     )

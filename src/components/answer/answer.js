@@ -3,26 +3,47 @@ import {connect} from "react-redux";
 
 import AnswerTextInput from "./answer-textinput";
 import AnswerRadioButton from './answer-radiobutton';
-import AnswerCheckbox from "./answer-checkbox";
+import AnswerCheckboxContainer from "./answer-checkbox";
 import AnswerSelect from "./answer-select";
 import ErrorIndicator from "../error-indicator";
 
 import {incrementScore, setUserAnswer} from "../../redux/actions";
+import {validation} from "../../utilits";
 
 import './answer.css'
 
+
 const Answer = (props) => {
 
-    const { questionItem: {type} } = props;
+    const {  questionItem, isFinished, incrementScore,  userAnswers, setUserAnswer } = props;
+    const  {type, rightAnswer, id} = questionItem;
 
+    let resultClass = '';
+    let isChangeable = false;
+
+    if(isFinished){
+        const isValid = validation(userAnswers[id], rightAnswer, incrementScore);
+        isValid ? (resultClass = 'is-valid') : (resultClass = 'is-invalid');
+        isChangeable = true;
+    }
+
+    // console.log(userAnswers);
+
+    const propsToChild = {
+        questionItem,
+        userAnswers,
+        resultClass,
+        setUserAnswer,
+        isChangeable
+    };
 
     let answer;
 
     switch(type){
-        case 'select': answer = <AnswerSelect {...props}/>; break;
-        case 'radio-button': answer = <AnswerRadioButton {...props}/>; break;
-        case 'textinput': answer = <AnswerTextInput {...props}/>; break;
-        case 'checkbox': answer = <AnswerCheckbox {...props}/>; break;
+        case 'select': answer = <AnswerSelect {...propsToChild}/>; break;
+        case 'radio-button': answer = <AnswerRadioButton {...propsToChild}/>; break;
+        case 'textinput': answer = <AnswerTextInput {...propsToChild}/>; break;
+        case 'checkbox': answer = <AnswerCheckboxContainer {...propsToChild} rightAnswer={rightAnswer}/>; break;
         default: answer = (
             <div>
                 <h3>Something wring with question type</h3>
@@ -31,7 +52,7 @@ const Answer = (props) => {
     }
 
     return (
-        <div className='Box-body'>
+        <div className={`Box-body `}>
             {
                 answer
             }

@@ -1,3 +1,10 @@
 select{
     margin-left: 1rem;
 }
+option.is-valid{
+    color: green;
+}
+
+option.is-invalid{
+    color: red;
+}

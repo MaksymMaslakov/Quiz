@@ -1,3 +1,3 @@
-import AnswerCheckbox from './answer-checkbox';
+import AnswerCheckboxContainer from './answer-checkbox-container';
 
-export default AnswerCheckbox;
+export default AnswerCheckboxContainer;

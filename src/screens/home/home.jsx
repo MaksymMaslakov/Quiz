@@ -8,10 +8,11 @@ import { invertIsFinished } from '../../redux/actions';
 
 const Home = (props) => {
 
-    const { invertIsFinished } = props;
+    const { invertIsFinished, score } = props;
 
     return(
         <Fragment>
+            <h1>Score: {score}</h1>
             <Header/>
             <QuestionList/>
             <div className='row justify-content-center'>
@@ -22,6 +23,10 @@ const Home = (props) => {
     )
 };
 
+const mapStateToProps = ({score}) => {
+    return {score}
+};
+
 const mapDispatchToProps = (dispatch) => {
     return {
         invertIsFinished: invertIsFinished(dispatch)
@@ -29,4 +34,4 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 
-export default connect(null,mapDispatchToProps)(Home);
+export default connect(mapStateToProps,mapDispatchToProps)(Home);

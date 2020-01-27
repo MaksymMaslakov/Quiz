@@ -1,20 +1,13 @@
 import React from "react";
 
 import "./answer-select.css";
-import {validation} from "../../../utilits";
 
 const AnswerSelect = (props) => {
 
-    const {  questionItem, isFinished, incrementScore, setUserAnswer, userAnswers } = props;
-    const { options, rightAnswer, id } = questionItem;
+    const {  questionItem, setUserAnswer, userAnswers, resultClass, isChangeable } = props;
+    const { options, id } = questionItem;
 
-    let resultClass = '';
-    // console.log(userAnswers);
-    if(isFinished){
-        const isValid = validation(userAnswers[id], rightAnswer, incrementScore);
-        isValid ? (resultClass = 'is-valid') : (resultClass = 'is-invalid');
-    }
-    console.log(resultClass);
+
     return (
         <form className={`form-group col-10 offset-1 ${resultClass}`}>
             <label htmlFor={`select-${id}`}>
@@ -22,6 +15,7 @@ const AnswerSelect = (props) => {
             </label>
             <select
                     size="1"
+                    disabled={isChangeable}
                     id={`select-${id}`}
                     value={userAnswers[id] || ''}
                     onChange={ (e) => setUserAnswer(id, e.target.value)}>
@@ -32,7 +26,7 @@ const AnswerSelect = (props) => {
                     -
                 </option>
                 {
-                    options.map( (option,) => {
+                    options.map( (option) => {
                         return (
                             <option id={`option-${option.id}`}
                                     key={option.id}

@@ -1,0 +1,14 @@
+
+label.is-valid{
+    border: 1px solid green;
+    border-bottom: 1px solid green!important;
+    border-radius: 3px;
+    padding: 3px 3px 3px 0;
+}
+
+label.is-invalid{
+    border: 1px solid red;
+    border-bottom: 1px solid red!important;
+    border-radius: 3px;
+    padding: 3px;
+}
