@@ -1,17 +1,23 @@
 import React, { Fragment, useState } from "react";
+import { compose } from "redux";
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
-import { Link } from "react-router-dom";
 
 import Header from "../../components/header";
 import QuestionList from "../../components/question-list";
 import { ModalWindow } from "../../components/modal-window";
 
-import { invertIsFinished } from '../../redux/actions';
+import { withQuestionsService } from '../../components/hoc'
+import {fetchQuestionList, invertIsFinished, setScore, setUserAnswer} from '../../redux/actions';
 
 
 const Home = (props) => {
-    const { invertIsFinished, score,isFinished, questionList, userAnswers, history } = props;
+    const {
+        invertIsFinished, isFinished,
+        setScore, score,
+        questionList, fetchQuestionList,
+        userAnswers, setUserAnswer,
+        history } = props;
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -27,19 +33,36 @@ const Home = (props) => {
                 <Button variant="primary"
                         className={`btn`}
                         onClick={() => {
-                    if(Object.keys(questionList).length === Object.keys(userAnswers).length) {
-                        invertIsFinished();
-                        history.push('/result');
-                        return;
-                    }
-                    handleShow()}
-                }>
+                            if(Object.keys(questionList).length === Object.keys(userAnswers).length) {
+                                invertIsFinished();
+                                history.push('/result');
+                                return;
+                            }
+                        handleShow()}}>
                     Закончить тест
                 </Button>
-                {isFinished && <Button variant="primary"
-                                       className={`btn`}
-                                       onClick={ ()=> history.push('/result')}>
-                    К результатам</Button>}
+                {isFinished &&
+                <Fragment>
+                        <Button variant="primary"
+                                className={`btn`}
+                                onClick={ ()=> {
+                                    history.push('/result');
+                                }}>
+                         К результатам
+                        </Button>
+                        <Button variant="primary"
+                                className={`btn`}
+                                onClick={() => {
+                                    window.localStorage.clear();
+                                    setScore(0);
+                                    fetchQuestionList();
+                                    setUserAnswer(null,null,"restart");
+                                    invertIsFinished();
+                            }}>
+                            Пройти еще раз
+                    </Button>
+                </Fragment>
+                }
                 <ModalWindow show={show}
                              invertIsFinished={invertIsFinished}
                              history={history}
@@ -59,11 +82,17 @@ const mapStateToProps = ({score, questions: {questionList}, userAnswers, isFinis
     }
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, { questionsService }) => {
     return {
-        invertIsFinished: invertIsFinished(dispatch)
+        invertIsFinished: invertIsFinished(dispatch),
+        setScore: setScore(dispatch),
+        fetchQuestionList: fetchQuestionList(dispatch, questionsService),
+        setUserAnswer: setUserAnswer(dispatch)
     }
 };
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(Home);
+export default compose(
+    withQuestionsService(),
+    connect(mapStateToProps,mapDispatchToProps)
+)(Home);

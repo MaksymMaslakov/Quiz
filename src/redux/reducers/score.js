@@ -7,6 +7,9 @@ const updateScore = (state, action) => {
         return (state.score + 1)
     }
 
+    if(action.type === 'SET_SCORE')
+        return action.payload;
+
     return state.score;
 
 };

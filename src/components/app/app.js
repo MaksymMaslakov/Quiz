@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { compose } from "redux";
 import { connect } from 'react-redux';
 
@@ -14,6 +14,16 @@ import { fetchQuestionList } from "../../redux/actions";
 
 
 class App extends Component{
+
+    // componentDidMount() {
+    //     if (!window.localStorage.state)
+    //                 this.props.fetchQuestionList();
+    //     else{
+    //
+    //     }
+    // }
+
+
     render(){
 
         return(
@@ -22,8 +32,13 @@ class App extends Component{
                        component={Home}
                        exact/>
                 <Route path='/result'
-                       component={Result}
-                       // render={() => <h1>Hello</h1>}
+                       // component={Result}
+                       render={() => {
+                           if(!this.props.isFinished)
+                               return <Redirect to="/" />;
+                           else
+                                return <Result/>;
+                       }}
                        exact/>
                 <Route component={ErrorIndicator}  />
             </Switch>
@@ -32,12 +47,18 @@ class App extends Component{
     }
 }
 
+const mapStateToProps = ({isFinished}) => {
+  return {
+      isFinished
+  }
+};
+
 const mapDispatchToProps = (dispatch, { questionsService }) => {
     return {
-        fetchQuestionList: fetchQuestionList(dispatch, questionsService)()
+        fetchQuestionList: fetchQuestionList(dispatch, questionsService)
     }
 };
 
 export default compose(
     withQuestionsService(),
-    connect(null,mapDispatchToProps))(App);
+    connect(mapStateToProps,mapDispatchToProps))(App);

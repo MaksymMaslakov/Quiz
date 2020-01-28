@@ -6,16 +6,12 @@ import './answer-checkbox.css';
 
 class AnswerCheckboxContainer extends Component{
 
-    componentDidMount() {
-        this.props.setUserAnswer(this.props.questionItem.id, []);
-    }
-
     handleChange = (e) => {
         const {setUserAnswer,userAnswers, questionItem: {id}} = this.props;
 
         const optionId = e.target.name;
         const isChecked = e.target.checked;
-        let newArr = userAnswers[id];
+        let newArr = userAnswers[id] || [];
 
         isChecked
             ?newArr.push(Number(optionId))
@@ -45,7 +41,11 @@ class AnswerCheckboxContainer extends Component{
                                 isChangeable={isChangeable}
                                 rightAnswer={rightAnswer}
                                 onChange = { this.handleChange }
-                                checked = {userAnswers[id]? !!userAnswers[id].find( id => option.id === id): false}
+                                checked = {
+                                    userAnswers[id]
+                                        ? !!userAnswers[id].find( id => option.id === id)
+                                        : false
+                                }
                                 option={option}
                                 id={id}
                                 key={`${id}-${option.id}`}/>)
