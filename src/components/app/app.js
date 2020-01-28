@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import ErrorIndicator from "../error-indicator";
 import Home from "../../screens/home"
+import Result from '../../screens/results'
 
 import './app.css';
 
@@ -15,16 +16,14 @@ import { fetchQuestionList } from "../../redux/actions";
 class App extends Component{
     render(){
 
-
-
         return(
             <Switch>
                 <Route path='/'
                        component={Home}
                        exact/>
                 <Route path='/result'
-                       // component={Home}
-                       render={() => <h1>Hello</h1>}
+                       component={Result}
+                       // render={() => <h1>Hello</h1>}
                        exact/>
                 <Route component={ErrorIndicator}  />
             </Switch>
@@ -35,7 +34,7 @@ class App extends Component{
 
 const mapDispatchToProps = (dispatch, { questionsService }) => {
     return {
-        fetchQuestionList: fetchQuestionList(dispatch, questionsService)
+        fetchQuestionList: fetchQuestionList(dispatch, questionsService)()
     }
 };
 

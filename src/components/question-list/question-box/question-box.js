@@ -1,13 +1,10 @@
 import React from "react";
 
-import Question from "../../question";
-import Answer from "../../answer";
-
 import './question-box.css';
 
 const QuestionBox = (props) => {
 
-    const { questionItem, index } = props;
+    const { questionItem, index, Question, Answer} = props;
 
     return (
         <li>

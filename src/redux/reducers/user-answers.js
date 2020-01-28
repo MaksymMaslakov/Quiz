@@ -3,8 +3,8 @@ const updateUserAnswers = (state,action) =>{
         return {}
     }
 
-    if(action.type === 'ANSWERS_SUBMIT' )
-        return {
+    if(action.type === 'ANSWERS_SUBMIT')
+        return action.payload.restart ? {} : {
             ...state.userAnswers,
             [action.payload.questionId]: action.payload.userAnswer
         };

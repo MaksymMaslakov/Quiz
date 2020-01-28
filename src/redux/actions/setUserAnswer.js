@@ -1,10 +1,11 @@
-const setUserAnswer = (dispatch) => (questionId, userAnswer) => {
+const setUserAnswer = (dispatch) => (questionId, userAnswer, restart = false) => {
 
     dispatch({
         type: 'ANSWERS_SUBMIT',
         payload: {
             questionId,
-            userAnswer
+            userAnswer,
+            restart
         }
     })
 };

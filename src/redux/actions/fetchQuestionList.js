@@ -18,7 +18,7 @@ const questionsError = (error) => {
     }
 };
 
-const fetchQuestionList = (dispatch, questionsService) => {
+const fetchQuestionList = (dispatch, questionsService)=> () => {
     dispatch(questionsRequested());
     questionsService.getAllQuestions()
         .then( (questions) => dispatch(questionsLoaded(questions)))
