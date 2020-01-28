@@ -1,7 +1,7 @@
 import React from "react";
 
-import Question from "../../../../components/question";
-import Answer from "../../../../components/answer";
+import Question from "../../question";
+import Answer from "../../answer";
 
 import './question-box.css';
 

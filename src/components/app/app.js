@@ -11,6 +11,7 @@ import './app.css';
 import { withQuestionsService } from '../hoc';
 import { fetchQuestionList } from "../../redux/actions";
 
+
 class App extends Component{
     render(){
 
@@ -19,7 +20,11 @@ class App extends Component{
         return(
             <Switch>
                 <Route path='/'
-                       render={() => <Home/> }
+                       component={Home}
+                       exact/>
+                <Route path='/result'
+                       // component={Home}
+                       render={() => <h1>Hello</h1>}
                        exact/>
                 <Route component={ErrorIndicator}  />
             </Switch>

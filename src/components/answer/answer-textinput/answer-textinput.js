@@ -1,7 +1,5 @@
 import React from "react";
 
-import { validation } from '../../../utilits';
-
 import './answer-textinput.css';
 
 

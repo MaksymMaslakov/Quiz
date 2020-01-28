@@ -10,6 +10,7 @@ import ErrorIndicator from "../error-indicator";
 import {incrementScore, setUserAnswer} from "../../redux/actions";
 import {validation} from "../../utilits";
 
+
 import './answer.css'
 
 
@@ -27,7 +28,7 @@ const Answer = (props) => {
         isChangeable = true;
     }
 
-    // console.log(userAnswers);
+
 
     const propsToChild = {
         questionItem,

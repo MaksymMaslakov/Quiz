@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import QuestionBox from "./question-box/question-box";
-import Spinner from "../../../components/spinner";
+import Spinner from "../spinner";
 
 import "./question-list.css"
 

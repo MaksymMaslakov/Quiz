@@ -9,16 +9,16 @@ const AnswerSelect = (props) => {
 
 
     return (
-        <form className={`form-group col-10 offset-1 ${resultClass}`}>
+        <form className={`form-group col-10 offset-1 `}>
             <label htmlFor={`select-${id}`}>
                 Оберіть одну правильну відповідь
             </label>
-            <select
+            <select className={`${resultClass}`}
                     size="1"
                     disabled={isChangeable}
                     id={`select-${id}`}
                     value={userAnswers[id] || ''}
-                    onChange={ (e) => setUserAnswer(id, e.target.value)}>
+                    onChange={ (e) => setUserAnswer(id, Number(e.target.value))}>
 
                 <option id={0}
                         key={0}
