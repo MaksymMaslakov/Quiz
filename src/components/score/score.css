@@ -1,0 +1,15 @@
+#score{
+    margin: 20px auto;
+    text-align: center;
+}
+
+#score span{
+    padding: 8px 16px!important;
+    align-items: center;
+
+    margin: -1px -1px 0;
+
+    border: 1px solid #d1d5da;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}

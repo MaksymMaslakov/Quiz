@@ -15,15 +15,6 @@ import { fetchQuestionList } from "../../redux/actions";
 
 class App extends Component{
 
-    // componentDidMount() {
-    //     if (!window.localStorage.state)
-    //                 this.props.fetchQuestionList();
-    //     else{
-    //
-    //     }
-    // }
-
-
     render(){
 
         return(

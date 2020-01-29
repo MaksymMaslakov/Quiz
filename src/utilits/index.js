@@ -1,5 +1,9 @@
-import { validation } from './validate'
+import validation from './validate';
+import computeScore from "./computeScore";
+import restart from "./restart";
 
 export {
-    validation
+    validation,
+    computeScore,
+    restart
 }

@@ -11,15 +11,9 @@ const incrementScore = (dispatch) => () => {
     })
 };
 
-const decrementScore = (dispatch) => () => {
-    dispatch( {
-        type: 'DECREMENT_SCORE'
-    })
-};
 
 
 export {
     setScore,
-    incrementScore,
-    decrementScore
+    incrementScore
 };

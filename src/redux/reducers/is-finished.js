@@ -4,7 +4,6 @@ const updateIsFinished = (state, action) => {
 
 
     if (action.type === 'INVERT_IS_FINISHED'){
-        console.log(!state.isFinished);
         return !state.isFinished;
     }
 

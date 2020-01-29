@@ -1,17 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose } from "redux";
 
 import QuestionBox from "./question-box/question-box";
-import Question from "../question";
-import Answer from "../answer";
 import Spinner from "../spinner";
+
+import { withErrorBoundary } from "../hoc";
 
 import "./question-list.css"
 
 
 const QuestionList = (props) => {
 
-    const { questionList, isLoading } = props;
+    const { questionList = [{}], isLoading, Question, Answer } = props;
 
     if(isLoading)
         return <Spinner/>;
@@ -40,4 +41,7 @@ const mapStateToProps = ({questions: {questionList, isLoading}}) => {
     }
 };
 
-export default connect(mapStateToProps)(QuestionList);
+export default compose(
+    withErrorBoundary,
+    connect(mapStateToProps)
+)(QuestionList);

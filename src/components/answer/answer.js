@@ -7,7 +7,7 @@ import AnswerCheckboxContainer from "./answer-checkbox";
 import AnswerSelect from "./answer-select";
 import ErrorIndicator from "../error-indicator";
 
-import {incrementScore, setUserAnswer} from "../../redux/actions";
+import { setUserAnswer} from "../../redux/actions";
 import {validation} from "../../utilits";
 
 
@@ -16,14 +16,15 @@ import './answer.css'
 
 const Answer = (props) => {
 
-    const {  questionItem, isFinished, incrementScore,  userAnswers, setUserAnswer } = props;
+    const {  questionItem, isFinished,  userAnswers, setUserAnswer } = props;
     const  {type, rightAnswer, id} = questionItem;
 
     let resultClass = '';
     let isChangeable = false;
 
+
     if(isFinished){
-        const isValid = validation(userAnswers[id], rightAnswer, incrementScore);
+        const isValid = validation(userAnswers[id], rightAnswer, () => {});
         isValid ? (resultClass = 'is-valid') : (resultClass = 'is-invalid');
         isChangeable = true;
     }
@@ -69,7 +70,6 @@ const mapStateToProps = ({isFinished , userAnswers}) => {
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        incrementScore: incrementScore(dispatch),
         setUserAnswer: setUserAnswer(dispatch)
     }
 };

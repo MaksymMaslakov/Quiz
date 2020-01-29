@@ -1,7 +1,7 @@
 import React from "react";
 
 const RightAnswer = (props) => {
-    const { rightAnswer } = props.questionItem;
+    const { questionItem:{ rightAnswer } } = props;
 
     let answer;
 
@@ -22,10 +22,10 @@ const RightAnswer = (props) => {
         default: answer = <div className={`align-center`}>{rightAnswer}</div>
     }
 
-
     return (
-        <div className={`Box-body`}>{answer}</div>
+        <div className={`Box-body badge-success`}>{answer}</div>
     )
 };
 
-export default RightAnswer
+
+export default RightAnswer;
