@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
-
 import Header from "../../components/header";
 import Question from "../../components/question";
 import RightAnswer from '../../components/answer/right-answer'
@@ -11,7 +10,7 @@ import Score from "../../components/score";
 import QuestionList from "../../components/question-list/question-list";
 
 
-const Results = (props) => {
+const Results = () => {
 
     return(
       <Fragment>

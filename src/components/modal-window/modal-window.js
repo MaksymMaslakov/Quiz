@@ -10,11 +10,7 @@ import './modal-window.css';
 const ModalWindow = (props) => {
     const { handleClose, show, userAnswers, questionList, incrementScore, invertIsFinished, history} = props;
 
-
-    console.log(" Confirm: questionList: ", questionList );
-
     const handleConfirm = () => {
-        console.log(" FinishTestButton: questionList: ", questionList );
         computeScore(userAnswers, questionList, incrementScore);
         invertIsFinished();
         history.push('/result');

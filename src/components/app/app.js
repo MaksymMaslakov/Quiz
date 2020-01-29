@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { compose } from "redux";
 import { connect } from 'react-redux';
@@ -13,9 +13,7 @@ import { withQuestionsService } from '../hoc';
 import { fetchQuestionList } from "../../redux/actions";
 
 
-class App extends Component{
-
-    render(){
+const App = (props) => {
 
         return(
             <Switch>
@@ -23,9 +21,8 @@ class App extends Component{
                        component={Home}
                        exact/>
                 <Route path='/result'
-                       // component={Result}
                        render={() => {
-                           if(!this.props.isFinished)
+                           if(!props.isFinished)
                                return <Redirect to="/" />;
                            else
                                 return <Result/>;
@@ -35,8 +32,7 @@ class App extends Component{
             </Switch>
 
         )
-    }
-}
+};
 
 const mapStateToProps = ({isFinished}) => {
   return {
@@ -52,4 +48,5 @@ const mapDispatchToProps = (dispatch, { questionsService }) => {
 
 export default compose(
     withQuestionsService(),
-    connect(mapStateToProps,mapDispatchToProps))(App);
+    connect(mapStateToProps,mapDispatchToProps)
+)(App);

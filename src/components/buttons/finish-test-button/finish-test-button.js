@@ -18,7 +18,6 @@ const FinishTestButton = (props) => {
                 className={`btn`}
                 onClick={() => {
                     if(isAllAnswered){
-                        console.log(" FinishTestButton: questionList: ", questionList );
                         computeScore(userAnswers, questionList, incrementScore);
                         invertIsFinished();
                         history.push('/result')

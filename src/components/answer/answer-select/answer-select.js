@@ -7,7 +7,6 @@ const AnswerSelect = (props) => {
     const {  questionItem, setUserAnswer, userAnswers, resultClass, isChangeable } = props;
     const { options, id } = questionItem;
 
-
     return (
         <form className={`form-group col-10 offset-1 `}>
             <label htmlFor={`select-${id}`}>

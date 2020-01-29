@@ -10,7 +10,8 @@ const AnswerTextInput = (props) => {
     return (
         <form>
             <div className="form-group col-10 offset-1">
-                <label htmlFor={`input-${id}`}></label>
+                {/*label for beauty view*/}
+                <label htmlFor={`input-${id}`}>{null}</label>
                 <input
                        id={`input-${id}`}
                        className={`form-control ${resultClass}`}

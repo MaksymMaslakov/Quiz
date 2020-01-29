@@ -10,7 +10,6 @@ import ErrorIndicator from "../error-indicator";
 import { setUserAnswer} from "../../redux/actions";
 import {validation} from "../../utilits";
 
-
 import './answer.css'
 
 
@@ -22,14 +21,11 @@ const Answer = (props) => {
     let resultClass = '';
     let isChangeable = false;
 
-
     if(isFinished){
         const isValid = validation(userAnswers[id], rightAnswer, () => {});
         isValid ? (resultClass = 'is-valid') : (resultClass = 'is-invalid');
         isChangeable = true;
     }
-
-
 
     const propsToChild = {
         questionItem,

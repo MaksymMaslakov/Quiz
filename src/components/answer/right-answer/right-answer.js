@@ -8,7 +8,7 @@ const RightAnswer = (props) => {
     switch(typeof rightAnswer){
         case 'object':
             answer = (
-                <ul>
+                <ul className={`text-left`}>
                     {
                         rightAnswer.map( (item) => {
                             return (
@@ -23,7 +23,7 @@ const RightAnswer = (props) => {
     }
 
     return (
-        <div className={`Box-body badge-success`}>{answer}</div>
+        <div className={`Box-body badge-success  text-center`}>{answer}</div>
     )
 };
 

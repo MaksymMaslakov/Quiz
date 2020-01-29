@@ -6,14 +6,16 @@ import "./score.css";
 const Score = (props) => {
     const { score, questionList } = props;
 
+
     let maxScore = 0;
 
     questionList.map( (item) => {
         if(typeof item.rightAnswer === 'object'){
             maxScore += 3;
-            return;
+            return 1;
         }
         maxScore++;
+        return 1;
     });
 
     let scoreColor = '';

@@ -17,11 +17,8 @@ class AnswerCheckboxContainer extends Component{
             ?newArr.push(Number(optionId))
             :newArr = newArr.filter((id) => id !== Number(optionId));
 
-
         setUserAnswer(id, newArr)
     };
-
-
 
     render(){
         const {questionItem, userAnswers, rightAnswer, isChangeable} = this.props;
@@ -32,7 +29,6 @@ class AnswerCheckboxContainer extends Component{
             <form className={`form-group col-10 offset-1`}>
                 <label htmlFor={`container-${id}`}>
                     Оберіть декілька правильних відповідей
-
                 </label>
                 <div id={`container-${id}`}>
                     {
@@ -54,8 +50,6 @@ class AnswerCheckboxContainer extends Component{
             </form>
         )
     }
-
-
 }
 
 export default AnswerCheckboxContainer;

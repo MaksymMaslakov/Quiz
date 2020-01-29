@@ -3,7 +3,6 @@ const updateScore = (state, action) => {
         return 0;
 
     if( action.type === 'INCREMENT_SCORE') {
-        console.log(state.score + 1);
         return (state.score + 1)
     }
 
