@@ -1,4 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Corectc runs the app 
+First run 
+### `npm run start-json-server`
+, then run
+### `npm run start`
 
 ## Available Scripts
 
