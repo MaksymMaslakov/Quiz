@@ -2,6 +2,7 @@ import { COUNT_QUESTIONS } from "../../constants/config";
 
 const updateQuestionList = (state, action) => {
 
+
     if (state === undefined) {
         return {
             questionList: [],
@@ -9,6 +10,7 @@ const updateQuestionList = (state, action) => {
             error: null
         }
     }
+
 
     switch(action.type){
         case 'FETCH_QUESTIONS_LIST_REQUEST':

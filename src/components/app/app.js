@@ -15,7 +15,8 @@ import { fetchQuestionList } from "../../redux/actions";
 
 class App extends Component{
     componentDidMount() {
-        !this.props.isLoading && fetchQuestionList();
+        if(this.props.isLoading)
+            this.props.fetchQuestionList();
     }
 
     render(){
