@@ -1,10 +1,11 @@
+import { BASE_URL } from "../constants/config";
+
 class QuestionsService  {
 
-    _apiBased = 'http://localhost:8080';
 
     getAllQuestions = async () => {
 
-        const res = await fetch(`${this._apiBased}/questions`);
+        const res = await fetch(`${BASE_URL}/questions`);
 
         if(!res.ok){
             throw new Error(`Could not fetch, received ${res.status}`)
@@ -15,7 +16,7 @@ class QuestionsService  {
     };
 
     getQuestion = async (id) => {
-        const res = await fetch(`${this._apiBased}/questions/${id}`);
+        const res = await fetch(`${BASE_URL}/questions/${id}`);
 
         if(!res.ok){
             throw new Error(`Could not fetch, received ${res.status}`)

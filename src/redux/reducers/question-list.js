@@ -1,3 +1,5 @@
+import { COUNT_QUESTIONS } from "../../constants/config";
+
 const updateQuestionList = (state, action) => {
 
     if (state === undefined) {
@@ -16,13 +18,19 @@ const updateQuestionList = (state, action) => {
                 error: null
             };
 
-        case 'FETCH_QUESTIONS_LIST_SUCCESS':
+
+
+        case 'FETCH_QUESTIONS_LIST_SUCCESS':{
+
+            const beginSlice = Math.round(Math.random()*(action.payload.length - COUNT_QUESTIONS));
+            const endSlice = beginSlice + COUNT_QUESTIONS;
+            console.log('beginSlice', beginSlice, "\nendSlice", endSlice);
             return {
-                questionList: action.payload,
+                questionList: action.payload.slice(beginSlice,endSlice),
                 isLoading: false,
                 error: null
             };
-
+        }
         case 'FETCH_QUESTIONS_LIST_FAILURE':
             return {
                 questionList: [],

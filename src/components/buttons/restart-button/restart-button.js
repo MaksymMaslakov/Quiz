@@ -9,6 +9,7 @@ import {withQuestionsService} from "../../hoc";
 
 
 const RestartButton = (props) => {
+
     const { setScore, fetchQuestionList, setUserAnswer, invertIsFinished } = props;
     return (
         <Link to={'/'}
@@ -20,15 +21,9 @@ const RestartButton = (props) => {
 };
 
 const mapDispatchToProps = (dispatch, { questionsService }) =>{
-    // Dose localStorage have fetch questions?
-    let redux = JSON.parse(window.localStorage.redux);
-    const isQuestionsLoaded = (Object.keys(redux.questions.questionList).length !== 0);
-
     return {
         setScore: setScore(dispatch),
-        fetchQuestionList: isQuestionsLoaded
-                                ? fetchQuestionList(dispatch, questionsService)
-                                : fetchQuestionList(dispatch, questionsService)(),
+        fetchQuestionList: fetchQuestionList(dispatch, questionsService),
         setUserAnswer: setUserAnswer(dispatch),
         invertIsFinished: invertIsFinished(dispatch)
     }
@@ -36,5 +31,5 @@ const mapDispatchToProps = (dispatch, { questionsService }) =>{
 
 export default compose(
     withQuestionsService(),
-    connect(undefined, mapDispatchToProps)
+    connect(null, mapDispatchToProps)
 )(RestartButton)
